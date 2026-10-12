@@ -1,0 +1,138 @@
+:root {
+    color-scheme: light dark;
+    --bg: #0f172a;
+    --card: #1e293b;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #38bdf8;
+    --done: #64748b;
+    --danger: #f87171;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.shell {
+    width: min(560px, 100%);
+    padding: 3rem 1.25rem;
+}
+
+.hero h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: -0.02em;
+}
+
+.hero p {
+    margin: 0.35rem 0 2rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.new-todo {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.new-todo input {
+    flex: 1;
+    padding: 0.75rem 0.9rem;
+    border-radius: 10px;
+    border: 1px solid #334155;
+    background: var(--card);
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.new-todo input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+}
+
+button {
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.new-todo button {
+    padding: 0.75rem 1.25rem;
+    border: 0;
+    border-radius: 10px;
+    background: var(--accent);
+    color: #04293a;
+    font-weight: 600;
+}
+
+.validation {
+    display: block;
+    color: var(--danger);
+    font-size: 0.85rem;
+    margin: -1rem 0 1rem;
+}
+
+.todos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.todos li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.7rem 0.9rem;
+    border-radius: 10px;
+    background: var(--card);
+}
+
+.todos li .title {
+    flex: 1;
+}
+
+.todos li.done .title {
+    text-decoration: line-through;
+    color: var(--done);
+}
+
+.inline {
+    display: inline;
+    margin: 0;
+}
+
+.toggle,
+.delete {
+    background: none;
+    border: 0;
+    color: var(--muted);
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.toggle:hover {
+    color: var(--accent);
+}
+
+.delete:hover {
+    color: var(--danger);
+}
+
+.empty,
+.count {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
