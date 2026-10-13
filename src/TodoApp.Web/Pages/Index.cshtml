@@ -1,0 +1,41 @@
+@page
+@model TodoApp.Web.Pages.IndexModel
+@{
+    ViewData["Title"] = "Todos";
+}
+
+<header class="hero">
+    <h1>Todo</h1>
+    <p>.NET 10 · Clean Architecture · Vertical Slices · EF Core (in-memory)</p>
+</header>
+
+<form method="post" asp-page-handler="Create" class="new-todo">
+    <input asp-for="NewTitle" placeholder="What needs doing?" autocomplete="off" autofocus />
+    <button type="submit">Add</button>
+</form>
+<span asp-validation-for="NewTitle" class="validation"></span>
+
+@if (Model.Todos.Count == 0)
+{
+    <p class="empty">Nothing yet — add your first todo above.</p>
+}
+else
+{
+    <ul class="todos">
+        @foreach (var todo in Model.Todos)
+        {
+            <li class="@(todo.IsCompleted ? "done" : null)">
+                <form method="post" asp-page-handler="Toggle" class="inline">
+                    <input type="hidden" name="id" value="@todo.Id" />
+                    <button type="submit" class="toggle" title="Toggle done">@(todo.IsCompleted ? "☑" : "☐")</button>
+                </form>
+                <span class="title">@todo.Title</span>
+                <form method="post" asp-page-handler="Delete" class="inline">
+                    <input type="hidden" name="id" value="@todo.Id" />
+                    <button type="submit" class="delete" title="Delete">✕</button>
+                </form>
+            </li>
+        }
+    </ul>
+    <p class="count">@Model.Todos.Count(todo => !todo.IsCompleted) of @Model.Todos.Count remaining</p>
+}
